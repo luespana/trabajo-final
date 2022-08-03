@@ -4,58 +4,53 @@ import { NavLink } from "react-router-dom";
 
 function NavList() {
   let activeStyle = {
-    backgroundColor: "rgb(39, 133, 165)",
+    color: 'rgb(194, 193, 193)' 
   };
 
   return (
     <nav>
+      <div className="brand">
+        <NavLink to="/">FILMFINITY</NavLink>
+      </div>
       <ul>
         <li>
           <NavLink
             to="/"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Inicio
+            CARTELERA
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="nosotros"
+            to="entradas"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Nosotros
+            ENTRADAS
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="galeria"
+            to="contacto"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Galeria
+            CONTACTO
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="servicios"
+            to="preguntas"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Servicios
+            PREGUNTAS FRECUENTES
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="novedades"
+            to="login"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Novedades
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="Contacto"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Contacto
+            <i class="bi bi-person-circle iconoSize"></i>
           </NavLink>
         </li>
       </ul>
