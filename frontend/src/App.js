@@ -16,6 +16,7 @@ import LoginPage from "./pages/LoginPage";
 
 //import estilos react boostrap
 import "bootstrap/dist/css/bootstrap.min.css";
+import PeliculaDetalle from "./pages/PeliculaDetalle";
 // import LoginPage from "./pages/LoginPage";
 // import PreguntasPage from "./pages/PreguntasPage";
 // import ContactoPage from "./pages/ContactoPage";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/entradas" element={<EntradasPage />} />
           <Route path="/preguntas" element={<PreguntasPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/detalle/:id" element={<PeliculaDetalle />} />
         </Routes>
         <Footer />
       </BrowserRouter>
