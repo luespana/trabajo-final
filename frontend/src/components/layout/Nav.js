@@ -50,7 +50,7 @@ function NavList() {
             to="login"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            <i class="bi bi-person-circle iconoSize"></i>
+            <i className="bi bi-person-circle iconoSize"></i>
           </NavLink>
         </li>
       </ul>

@@ -12,9 +12,13 @@
     line-height: 54px;
     color: #000000;
 }
-
+.peliculas_container{
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    grid-gap: 1rem;
+}
 .card{
-    width: 20vw;
+    max-width: 250px;
 }
 
 .div-negro{

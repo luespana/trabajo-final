@@ -6,7 +6,6 @@ var fs = require('fs');
 /* GET login page. */
 router.get("/", async function (req, res, next) {
   var peliculas = await peliculasModel.getPeliculas();
-
   res.render("admin/peliculas", {
     layout: "admin/layout",
     persona: req.session.nombre,
@@ -69,15 +68,21 @@ router.get("/editar/:id", async (req, res, next) => {
 router.post("/editar", async (req, res, next) => {
   try {
     const data = req.body;
-    var tempFilePath = req.files.imagen.tempFilePath;
-    var mimetype = req.files.imagen.mimetype
-    var imageAsBase64 = fs.readFileSync(tempFilePath, 'base64');
-    const imagen = `data:${mimetype};base64,${imageAsBase64}`
-    await peliculasModel.editarPeliculaById({
-      ...data,
-      imagen
-    }, req.body.id);
-    res.redirect("/admin/peliculas");
+    if(!req.files){
+      await peliculasModel.editarPeliculaById(data, req.body.id);
+      res.redirect("/admin/peliculas");
+    }else{
+      var tempFilePath = req.files.imagen.tempFilePath;
+      var mimetype = req.files.imagen.mimetype
+      var imageAsBase64 = fs.readFileSync(tempFilePath, 'base64');
+      const imagen = `data:${mimetype};base64,${imageAsBase64}`
+      await peliculasModel.editarPeliculaById({
+        ...data,
+        imagen
+      }, req.body.id);
+      res.redirect("/admin/peliculas");
+    }
+    
   } catch (error) {
     console.error(error);
     res.render("admin/editar", {
