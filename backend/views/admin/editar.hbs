@@ -1,44 +1,82 @@
-<div class="container" style="margin:100px auto;">
-  <form action="/admin/novedades/editar" method="post" enctype="multipart/form-data">
+<div  style="margin:100px auto;">
+  <form class="container" action="/admin/peliculas/editar" method="post" enctype="multipart/form-data">
     <div class="row text-center m-5">
-      <h1 class="col text-center">Editar novedad - Id: {{novedad.id}}</h1>
+      <h1 class="col text-center">Editar pelicula - Id: {{pelicula.id}}</h1>
       <div class="col text-end">
-        <a class="btn btn-success" href="/admin/novedades">
+        <a class="btn btn-success" href="/admin/peliculas">
           <i class="bi bi-arrow-left-circle"></i>
           Volver
         </a>
       </div>
     </div>
     <div class="row">
-      <input type="hidden" name="id" value="{{novedad.id}} " />
+      <input type="hidden" name="id" value="{{pelicula.id}} " />
+      <div class="row">
       <div class="col">
-        <textarea
+        <input
           type="text"
           class="form-control"
           placeholder="Titulo"
           name="titulo"
-        >{{novedad.titulo}}</textarea>
+          value="{{pelicula.titulo}}"
+        />
       </div>
       <div class="col">
-        <textarea
+        <input
           type="text"
           class="form-control"
-          placeholder="Subtitulo"
-          name="subtitulo"
-        >{{novedad.subtitulo}}</textarea>
+          placeholder="Genero"
+          name="genero"
+          value="{{pelicula.genero}}"
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Minutos"
+          name="minutos"
+          value="{{pelicula.minutos}}"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Origen"
+          name="origen"
+          value="{{pelicula.origen}}"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Precio"
+          name="precio"
+          value="{{pelicula.precio}}"
+        />
       </div>
     </div>
     <div class="row mt-3">
       <div class="col">
         <textarea
-          name="cuerpo"
+          name="descripcion"
           rows="5"
           class="form-control"
-          placeholder="Cuerpo"
-        >{{novedad.cuerpo}}</textarea>
+          placeholder="Descripcion"
+        >{{pelicula.descripcion}}</textarea>
       </div>
     </div>
-    <div class="row m-4">
+    <div class="row mt-3">
+      <div class="col">
+        <img src={{pelicula.imagen}} alt="nigga" height="150" width="auto"/>
+        <input type="file" class="form-control" name="imagen" id="imagen" />
+      </div>
+    </div>
+    <div class="row mt-3">
       <button type="submit" class="btn btn-primary">Editar</button>
     </div>
   </form>

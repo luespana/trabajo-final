@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login')
 var app = express();
-var adminRouter = require('./routes/admin/novedades')
+var adminRouter = require('./routes/admin/peliculas')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,7 +52,7 @@ app.use(fileUpload({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin/login', loginRouter)
-app.use('/admin/novedades', secured, adminRouter)
+app.use('/admin/peliculas', secured, adminRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

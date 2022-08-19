@@ -1,10 +1,16 @@
-<div class="container" style="margin:100px auto;">
-  <form action="/admin/novedades/agregar" method="post" enctype="multipart/form-data">
+<div style="margin:100px auto;">
+  <form
+    class="container"
+    action="/admin/peliculas/agregar"
+    method="post"
+    enctype="multipart/form-data"
+  >
     <div class="row text-center m-5">
-      <h1 class="col text-center">Agregar novedad</h1>
+      <h1 class="col text-center">Agregar pelicula</h1>
       <div class="col text-end">
-        <a class="btn btn-success" href="/admin/novedades">
-        <i class="bi bi-arrow-left-circle"></i>  Volver
+        <a class="btn btn-success" href="/admin/peliculas">
+          <i class="bi bi-arrow-left-circle"></i>
+          Volver
         </a>
       </div>
     </div>
@@ -21,29 +27,50 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Subtitulo"
-          name="subtitulo"
+          placeholder="Genero"
+          name="genero"
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Minutos"
+          name="minutos"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Origen"
+          name="origen"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Precio"
+          name="precio"
         />
       </div>
     </div>
     <div class="row mt-3">
       <div class="col">
         <textarea
-          name="cuerpo"
+          name="descripcion"
           rows="5"
           class="form-control"
-          placeholder="Cuerpo"
+          placeholder="Descripcion"
         ></textarea>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col">
-       <input
-          type="file"
-          class="form-control"
-          name="imagen"
-          id="imagen"
-        />
+        <input type="file" class="form-control" name="imagen" id="imagen" />
       </div>
     </div>
     <div class="row m-4">
