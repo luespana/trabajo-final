@@ -11,4 +11,9 @@ router.get("/peliculas", async function (req, res, next) {
   res.json(peliculas);
 });
 
+router.post("/pelicula", async function (req, res, next) {
+  var pelicula = await peliculasModel.getPeliculaById(req.body.id);
+  res.json(pelicula);
+});
+
 module.exports = router;
