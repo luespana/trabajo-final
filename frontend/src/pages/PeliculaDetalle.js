@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/detalle.css";
+import { BASEURL } from "../database/config";
 
 function PeliculaDetalle() {
   const params = useParams();
   const [detalle, setDetalle] = useState(null);
   const getDetalle = () => {
-    axios
-      .post("http://localhost:3000/pelicula", { id: params.id })
-      .then((res) => {
-        console.log("detalle", res.data);
-        setDetalle(res.data);
-      });
+    axios.post(`${BASEURL}/peliculas`, { id: params.id }).then((res) => {
+      console.log("detalle", res.data);
+      setDetalle(res.data);
+    });
   };
   useEffect(() => {
     getDetalle();
@@ -32,7 +31,7 @@ function PeliculaDetalle() {
             <div className="boton">ENTRADAS</div>
           </div>
           <div className="columnaimagen">
-          <img className="imagen" src={detalle.imagen} alt={detalle.id} />
+            <img className="imagen" src={detalle.imagen} alt={detalle.id} />
           </div>
         </div>
       </div>

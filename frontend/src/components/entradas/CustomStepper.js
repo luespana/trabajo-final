@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import GlobalCustomStepper from "./GlobalCustomStepper";
+import axios from "axios";
+import { BASEURL } from "../../database/config";
 
 const steps = ["Pelicula", "Datos Personales", "Confirmar Datos"];
 
@@ -21,6 +23,12 @@ function CustomStepper() {
     email: "",
     telefono: "",
   });
+  const getPeliculasName = () => {
+    axios.get(`${BASEURL}/peliculasname`).then((res) => {
+      console.log(res.data);
+    });
+  };
+  React.useEffect(() => {}, []);
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();
   const styles = {

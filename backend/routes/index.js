@@ -16,4 +16,12 @@ router.post("/pelicula", async function (req, res, next) {
   res.json(pelicula);
 });
 
+router.get("/peliculasname", async function (req, res, next) {
+  var peliculas = await peliculasModel.getPeliculas();
+  var titulos = peliculas.map((pelicula) => {
+    return pelicula.titulo;
+  });
+  res.json(titulos);
+});
+
 module.exports = router;
