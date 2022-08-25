@@ -8,7 +8,7 @@ function PeliculaDetalle() {
   const params = useParams();
   const [detalle, setDetalle] = useState(null);
   const getDetalle = () => {
-    axios.post(`${BASEURL}/peliculas`, { id: params.id }).then((res) => {
+    axios.post(`${BASEURL}/pelicula`, { id: params.id }).then((res) => {
       console.log("detalle", res.data);
       setDetalle(res.data);
     });

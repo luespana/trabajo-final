@@ -39,7 +39,9 @@ function CustomStepper() {
   const handleSubmit = async () => {
     setLoading(true);
     const response = await axios.post(`${BASEURL}/compra`, info);
-    console.log(response);
+    if (response.data.error === false) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
