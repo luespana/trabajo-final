@@ -5,7 +5,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function PeliculaStep({ handleChange, info }) {
+function PeliculaStep({ handleChange, info, titulos }) {
+  const getDias = (days) => {
+    var today = new Date();
+    today.setDate(today.getDate() + days);
+    return today.toLocaleDateString();
+  };
   return (
     <div>
       <Box sx={{ minWidth: 120, marginTop: 5 }}>
@@ -17,7 +22,9 @@ function PeliculaStep({ handleChange, info }) {
             onChange={(event) => handleChange(event)}
             name="pelicula"
           >
-            <MenuItem value={"spiderman"}>Spiderman</MenuItem>
+            {titulos.map((titulo) => (
+              <MenuItem value={titulo}>{titulo} </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Box>
@@ -30,7 +37,8 @@ function PeliculaStep({ handleChange, info }) {
             onChange={(event) => handleChange(event)}
             name="formato"
           >
-            <MenuItem value={"spiderman"}>Spiderman</MenuItem>
+            <MenuItem value={"2D"}>2D</MenuItem>
+            <MenuItem value={"3D"}>3D</MenuItem>
           </Select>
         </FormControl>
       </Box>
@@ -43,7 +51,11 @@ function PeliculaStep({ handleChange, info }) {
             onChange={(event) => handleChange(event)}
             name="dia"
           >
-            <MenuItem value={"spiderman"}>Spiderman</MenuItem>
+            <MenuItem value={getDias(0)}>{getDias(0)}</MenuItem>
+            <MenuItem value={getDias(1)}>{getDias(1)}</MenuItem>
+            <MenuItem value={getDias(2)}>{getDias(2)}</MenuItem>
+            <MenuItem value={getDias(3)}>{getDias(3)}</MenuItem>
+            <MenuItem value={getDias(4)}>{getDias(4)}</MenuItem>
           </Select>
         </FormControl>
       </Box>
@@ -56,7 +68,10 @@ function PeliculaStep({ handleChange, info }) {
             onChange={(event) => handleChange(event)}
             name="horario"
           >
-            <MenuItem value={"spiderman"}>Spiderman</MenuItem>
+            <MenuItem value={"15:00"}>15:00</MenuItem>
+            <MenuItem value={"16:00"}>16:00</MenuItem>
+            <MenuItem value={"18:00"}>18:00</MenuItem>
+            <MenuItem value={"21:00"}>21:00</MenuItem>
           </Select>
         </FormControl>
       </Box>

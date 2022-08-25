@@ -13,6 +13,7 @@ import { BASEURL } from "../../database/config";
 const steps = ["Pelicula", "Datos Personales", "Confirmar Datos"];
 
 function CustomStepper() {
+  const [loading, setLoading] = React.useState(false);
   const [info, setInfo] = React.useState({
     pelicula: "",
     formato: "",
@@ -23,12 +24,6 @@ function CustomStepper() {
     email: "",
     telefono: "",
   });
-  const getPeliculasName = () => {
-    axios.get(`${BASEURL}/peliculasname`).then((res) => {
-      console.log(res.data);
-    });
-  };
-  React.useEffect(() => {}, []);
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();
   const styles = {
@@ -39,6 +34,12 @@ function CustomStepper() {
   const handleNext = () => {
     console.log(info);
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    const response = await axios.post(`${BASEURL}/compra`, info);
+    console.log(response);
   };
 
   const handleBack = () => {
@@ -64,7 +65,10 @@ function CustomStepper() {
       </Stepper>
       {activeStep === steps.length ? (
         <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>Gracias por tu compra!</Typography>
+          <Typography sx={{ mt: 2, mb: 1, textAlign: "center" }}>
+            <h2 style={{ fontWeight: "bold" }}>¡Gracias por su compra!</h2>
+            <p>Se le ha enviado un mail a su casilla de correo electronico</p>
+          </Typography>
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Box sx={{ flex: "1 1 auto" }} />
             <Button onClick={handleBackCartelera} style={styles}>
@@ -93,9 +97,16 @@ function CustomStepper() {
               Volver
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleNext} variant="contained" style={styles}>
-              {activeStep === steps.length - 1 ? "Finalizar" : "Siguiente"}
-            </Button>
+
+            {activeStep === steps.length - 1 ? (
+              <Button onClick={handleSubmit} variant="contained" style={styles}>
+                {loading === false ? "Finalizar" : "Enviando..."}
+              </Button>
+            ) : (
+              <Button onClick={handleNext} variant="contained" style={styles}>
+                Siguiente
+              </Button>
+            )}
           </Box>
         </React.Fragment>
       )}
