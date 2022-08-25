@@ -3,12 +3,11 @@ import PeliculaStep from "./PeliculaStep";
 import DatosStep from "./DatosStep";
 import ConfirmarStep from "./ConfirmarStep";
 import axios from "axios";
-import { BASEURL } from "../../database/config";
 
 function GlobalCustomStepper({ activeStep, info, setInfo }) {
   const [titulos, setTitulos] = useState(["Loading..."]);
   const getPeliculasName = () => {
-    axios.get(`${BASEURL}/peliculasname`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/peliculasname`).then((res) => {
       setTitulos(res.data);
     });
   };

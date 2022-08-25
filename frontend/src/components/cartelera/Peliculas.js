@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { BASEURL } from "../../database/config";
 
 function Peliculas() {
   const [peliculas, setPeliculas] = useState(null);
   const getPeliculas = () => {
-    axios.get(`${BASEURL}/peliculas`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/peliculas`).then((res) => {
       console.log(res.data);
       setPeliculas(res.data);
     });

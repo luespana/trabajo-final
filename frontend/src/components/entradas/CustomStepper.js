@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import GlobalCustomStepper from "./GlobalCustomStepper";
 import axios from "axios";
-import { BASEURL } from "../../database/config";
 
 const steps = ["Pelicula", "Datos Personales", "Confirmar Datos"];
 
@@ -38,7 +37,10 @@ function CustomStepper() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    const response = await axios.post(`${BASEURL}/compra`, info);
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/compra`,
+      info
+    );
     if (response.data.error === false) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }

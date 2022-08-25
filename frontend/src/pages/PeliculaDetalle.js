@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/detalle.css";
-import { BASEURL } from "../database/config";
 
 function PeliculaDetalle() {
   const params = useParams();
   const [detalle, setDetalle] = useState(null);
   const getDetalle = () => {
-    axios.post(`${BASEURL}/pelicula`, { id: params.id }).then((res) => {
-      console.log("detalle", res.data);
-      setDetalle(res.data);
-    });
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/pelicula`, { id: params.id })
+      .then((res) => {
+        console.log("detalle", res.data);
+        setDetalle(res.data);
+      });
   };
   useEffect(() => {
     getDetalle();
