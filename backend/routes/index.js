@@ -7,7 +7,7 @@ var nodemailer = require("nodemailer");
 router.get("/", function (req, res, next) {
   res.redirect("/admin/login");
 });
-
+//hola
 router.get("/peliculas", async function (req, res, next) {
   var peliculas = await peliculasModel.getPeliculas();
   res.json(peliculas);
