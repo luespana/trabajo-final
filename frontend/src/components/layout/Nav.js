@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function NavList() {
   let activeStyle = {
-    color: 'rgb(194, 193, 193)' 
+    color: "rgb(194, 193, 193)",
   };
 
   return (
@@ -46,12 +46,9 @@ function NavList() {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="login"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
+          <a href={process.env.REACT_APP_API_URL} target="_blank">
             <i className="bi bi-person-circle iconoSize"></i>
-          </NavLink>
+          </a>
         </li>
       </ul>
     </nav>
