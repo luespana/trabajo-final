@@ -12,6 +12,7 @@ import axios from "axios";
 const steps = ["Pelicula", "Datos Personales", "Confirmar Datos"];
 
 function CustomStepper() {
+  //https://script.google.com/macros/s/AKfycbzaFlgxZ8Jbz7n8Vvt68Ist5enjlFPeyHi1m5cMMVVH6nJb-L9VYVCpiOAe2NQ2p-9v/exec
   const [loading, setLoading] = React.useState(false);
   const [info, setInfo] = React.useState({
     pelicula: "",
@@ -37,13 +38,40 @@ function CustomStepper() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/compra`,
-      info
-    );
-    if (response.data.error === false) {
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    }
+    var formdata = new FormData();
+    formdata.set("pelicula", info.pelicula);
+    formdata.set("formato", info.formato);
+    formdata.set("dia", info.dia);
+    formdata.set("horario", info.horario);
+    formdata.set("nombre", info.nombre);
+    formdata.set("apellido", info.apellido);
+    formdata.set("email", info.email);
+    formdata.set("telefono", info.telefono);
+
+    await axios
+      .post(
+        "https://script.google.com/macros/s/AKfycbzaFlgxZ8Jbz7n8Vvt68Ist5enjlFPeyHi1m5cMMVVH6nJb-L9VYVCpiOAe2NQ2p-9v/exec",
+        formdata
+      )
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        // addToast("¡Mail enviado!", {
+        //   appearance: "success",
+        //   autoDismiss: true,
+        // });
+      })
+      .catch((err) => {
+        console.log("error post", err);
+      });
+    // const response = await axios.post(
+    //   `${process.env.REACT_APP_API_URL}/compra`,
+    //   info
+    // );
+    // if (response.data.error === false) {
+    //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // }
   };
 
   const handleBack = () => {
@@ -106,8 +134,32 @@ function CustomStepper() {
               <Button onClick={handleSubmit} variant="contained" style={styles}>
                 {loading === false ? "Finalizar" : "Enviando..."}
               </Button>
+            ) : activeStep === 0 ? (
+              <Button
+                onClick={handleNext}
+                variant="contained"
+                style={styles}
+                disabled={
+                  info.pelicula == "" ||
+                  info.formato == "" ||
+                  info.dia == "" ||
+                  info.horario == ""
+                }
+              >
+                Siguiente
+              </Button>
             ) : (
-              <Button onClick={handleNext} variant="contained" style={styles}>
+              <Button
+                onClick={handleNext}
+                variant="contained"
+                style={styles}
+                disabled={
+                  info.nombre == "" ||
+                  info.apellido == "" ||
+                  info.email == "" ||
+                  info.telefono == ""
+                }
+              >
                 Siguiente
               </Button>
             )}

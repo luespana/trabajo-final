@@ -13,7 +13,6 @@ import EntradasPage from "./pages/EntradasPage";
 import ContactoPage from "./pages/ContactoPage";
 import LoginPage from "./pages/LoginPage";
 
-
 //import estilos react boostrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import PeliculaDetalle from "./pages/PeliculaDetalle";

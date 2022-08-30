@@ -1,58 +1,58 @@
-.cartelera_title{
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    color: #000000;
-    opacity: 0.5;
+.cartelera_title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  opacity: 0.5;
 }
 
-.peliculas_title{
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 54px;
-    color: #000000;
+.peliculas_title {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 54px;
+  color: #000000;
 }
-.peliculas_container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    grid-auto-rows: auto;
+.peliculas_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: auto;
 }
-.card{
-    max-width: 250px;
-}
-
-.div-negro{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40%;
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 1.5rem;
+.card {
+  max-width: 250px;
 }
 
-.titulo-card{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #ffffff;
-    margin: 0;
-    
+.div-negro {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 1.5rem;
 }
 
-.play{
-    font-size: 40px;
-    color: white;
+.titulo-card {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  margin: 0;
+  height: 60px;
 }
 
-.genero-card{
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0 auto;
+.play {
+  font-size: 40px;
+  color: white;
 }
 
-.fila2{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.genero-card {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.fila2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

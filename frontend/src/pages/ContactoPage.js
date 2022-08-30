@@ -4,8 +4,11 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
 function ContactoPage() {
+  //https://script.google.com/macros/s/AKfycbzK1_400DfjPQTOWDCCxIE9qQhEMi6XZ6c1GabPP0FwSb_atFhODsDj20HmfLJ3Isbq/exec
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
@@ -17,7 +20,32 @@ function ContactoPage() {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
   };
-  
+  const handleEnviarMail = async () => {
+    setLoading(true);
+    var formdata = new FormData();
+    formdata.set("nombre", form.nombre);
+    formdata.set("apellido", form.apellido);
+    formdata.set("email", form.email);
+    formdata.set("telefono", form.telefono);
+    formdata.set("mensaje", form.mensaje);
+
+    await axios
+      .post(
+        "https://script.google.com/macros/s/AKfycbzK1_400DfjPQTOWDCCxIE9qQhEMi6XZ6c1GabPP0FwSb_atFhODsDj20HmfLJ3Isbq/exec",
+        formdata
+      )
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+        // addToast("¡Mail enviado!", {
+        //   appearance: "success",
+        //   autoDismiss: true,
+        // });
+      })
+      .catch((err) => {
+        console.log("error post", err);
+      });
+  };
   return (
     <main className="holder">
       <div>
@@ -107,8 +135,13 @@ function ContactoPage() {
           autoComplete="off"
         >
           <FormControl fullWidth>
-            <Button variant="contained" color="success" endIcon={<SendIcon />}>
-              Enviar
+            <Button
+              onClick={handleEnviarMail}
+              variant="contained"
+              color="success"
+              endIcon={<SendIcon />}
+            >
+              {loading === true ? "Enviando..." : "Enviar"}
             </Button>
           </FormControl>
         </Box>

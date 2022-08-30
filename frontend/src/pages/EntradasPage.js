@@ -1,6 +1,6 @@
 import React from "react";
 import CustomStepper from "../components/entradas/CustomStepper";
-import '../styles/entradas.css'
+import "../styles/entradas.css";
 
 function EntradasPage() {
   return (
