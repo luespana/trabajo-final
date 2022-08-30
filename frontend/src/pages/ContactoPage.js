@@ -17,6 +17,7 @@ function ContactoPage() {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
   };
+  
   return (
     <main className="holder">
       <div>
