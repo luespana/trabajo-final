@@ -12,6 +12,7 @@ const style = {
 };
 
 function ConfirmarStep({ info }) {
+  //kk
   return (
     <List sx={style} aria-label="mailbox folders">
       <ListItem divider>
