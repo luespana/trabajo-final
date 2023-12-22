@@ -1,6 +1,8 @@
 import React from "react";
 
-function Card({ pelicula }) {
+function Card({ pelicula }) { 
+  // imagen, id, titulo, genero
+
   return (
     <div className="card">
       <img

@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import PeliculaStep from "./PeliculaStep";
 import DatosStep from "./DatosStep";
 import ConfirmarStep from "./ConfirmarStep";
-import axios from "axios";
+import { getAll } from "../../db/firebase";
 
 function GlobalCustomStepper({ activeStep, info, setInfo }) {
   const [titulos, setTitulos] = useState(["Loading..."]);
-  const getPeliculasName = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/peliculasname`).then((res) => {
-      setTitulos(res.data);
-    });
+  const getPeliculasName = async () => {
+    try {
+      const peliculas = await getAll("peliculas")
+      console.log("peliculas", peliculas)
+      const titulos = peliculas.map((pelicula) => pelicula.titulo)
+      setTitulos(titulos)
+    } catch (error) {
+      console.error(error)
+    }
   };
   useEffect(() => {
     getPeliculasName();

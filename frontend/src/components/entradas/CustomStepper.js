@@ -140,10 +140,10 @@ function CustomStepper() {
                 variant="contained"
                 style={styles}
                 disabled={
-                  info.pelicula == "" ||
-                  info.formato == "" ||
-                  info.dia == "" ||
-                  info.horario == ""
+                  info.pelicula === "" ||
+                  info.formato === "" ||
+                  info.dia === "" ||
+                  info.horario === ""
                 }
               >
                 Siguiente
@@ -154,10 +154,10 @@ function CustomStepper() {
                 variant="contained"
                 style={styles}
                 disabled={
-                  info.nombre == "" ||
-                  info.apellido == "" ||
-                  info.email == "" ||
-                  info.telefono == ""
+                  info.nombre === "" ||
+                  info.apellido === "" ||
+                  info.email === "" ||
+                  info.telefono === ""
                 }
               >
                 Siguiente

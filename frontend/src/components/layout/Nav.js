@@ -1,5 +1,4 @@
 import React from "react";
-//import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 function NavList() {
@@ -45,11 +44,11 @@ function NavList() {
             PREGUNTAS FRECUENTES
           </NavLink>
         </li>
-        <li>
-          <a href={process.env.REACT_APP_API_URL} target="_blank">
+        {/* <li>
+          <a href={process.env.REACT_APP_API_URL} >
             <i className="bi bi-person-circle iconoSize"></i>
           </a>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import "../styles/detalle.css";
+import { getById } from "../db/firebase";
 
 function PeliculaDetalle() {
   const params = useParams();
   const [detalle, setDetalle] = useState(null);
-  const getDetalle = () => {
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/pelicula`, { id: params.id })
-      .then((res) => {
-        console.log("detalle", res.data);
-        setDetalle(res.data);
-      });
+  const getDetalle = async () => {
+    try {
+      const detalle = await getById("peliculas", params.id)
+      setDetalle(detalle)
+    } catch (error) {
+      console.error(error)
+    }
   };
   useEffect(() => {
     getDetalle();
-  }, []);
+  });
   if (detalle != null) {
     return (
       <div className="holder">
