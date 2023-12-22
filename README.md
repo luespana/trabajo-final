@@ -1,6 +1,5 @@
 # Filmfinity
 
-http://filmfinityfront.herokuapp.com/
 
 Filmfinity es un clon de una web de cine, con funcionalidades tales como: vista detalle de las peliculas en cartelera, venta de entradas y contacto.
 
